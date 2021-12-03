@@ -4,7 +4,7 @@ steps:
     args: [
       'build',
       '--build-arg',
-      'PORT=$PORT',
+      'PORT=$_PORT',
       '-t',
       'gcr.io/$_GCP_PROJECT_ID/currency_exchanger',
       '.',
