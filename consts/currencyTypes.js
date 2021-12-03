@@ -1,0 +1,1 @@
+export const currencyTypes = ['TWD', 'USD', 'JPY'];
