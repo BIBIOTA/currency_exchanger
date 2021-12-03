@@ -6,16 +6,19 @@ steps:
       '--build-arg',
       'PORT=$_PORT',
       '-t',
-      'gcr.io/$_GCP_PROJECT_ID/currency-exchanger',
+      'gcr.io/$_GCP_PROJECT_ID/${_IMAGE}:$BUILD_ID',
       '.',
     ]
     # push the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'gcr.io/$_GCP_PROJECT_ID/currency-exchanger']
+    args: [ 'push', 'gcr.io/$_GCP_PROJECT_ID/${_IMAGE}:$BUILD_ID']
     # deploy to gke
-  # - name: "gcr.io/cloud-builders/gke-deploy"
-  #   args:
-  #   - run
-  #   - --filename=irunning
-  #   - --location=asia-east1
-  #   - --cluster=irunning
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+    - 'set'
+    - 'image'
+    - 'deployment/${_DEPLOYMENT}'
+    - '${_CONTAINER}=gcr.io/$PROJECT_ID/${_IMAGE}:$BUILD_ID'
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
