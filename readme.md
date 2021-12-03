@@ -3,7 +3,7 @@
 <a href="https://currency-exchanger.bibiota.com/">https://currency-exchanger.bibiota.com/</a>
 
 <br />
-api for exchange money (Important ! This's' example static exchange rate. Not Real.)
+api for exchange money (Important ! This's example static exchange rate. Not Real.)
 <br />
 api:
 <br />
