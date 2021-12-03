@@ -6,12 +6,12 @@ steps:
       '--build-arg',
       'PORT=$_PORT',
       '-t',
-      'gcr.io/$_GCP_PROJECT_ID/currencyExchanger',
+      'gcr.io/$_GCP_PROJECT_ID/currency-exchanger',
       '.',
     ]
     # push the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'gcr.io/$_GCP_PROJECT_ID/currencyExchanger']
+    args: [ 'push', 'gcr.io/$_GCP_PROJECT_ID/currency-exchanger']
     # deploy to gke
   # - name: "gcr.io/cloud-builders/gke-deploy"
   #   args:
