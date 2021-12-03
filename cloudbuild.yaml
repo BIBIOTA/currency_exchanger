@@ -1,0 +1,21 @@
+steps:
+    # build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '--build-arg',
+      'PORT=$PORT',
+      '-t',
+      'gcr.io/$_GCP_PROJECT_ID/currency_exchanger',
+      '.',
+    ]
+    # push the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'gcr.io/$_GCP_PROJECT_ID/currency_exchanger']
+    # deploy to gke
+  # - name: "gcr.io/cloud-builders/gke-deploy"
+  #   args:
+  #   - run
+  #   - --filename=irunning
+  #   - --location=asia-east1
+  #   - --cluster=irunning
